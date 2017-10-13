@@ -32,15 +32,54 @@ I love [plnkr](http://plnkr.co/) and that's what I'm going to use to show you th
 
 ### Option
 
-Let's begin with an easy one, the `Option` monad.
+Let's begin with an easy one, the `Option` monad. 
+`Option` is also known as `Maybe`. 
+This monad encodes an unsucessful computation by not returning
+a value.
+A successful computation is encoded in the `Some` datastructure and
+an erroneous one in the `None` datastructure.
 
-> https://en.wikibooks.org/wiki/Haskell/Understanding_monads/Maybe
->
-> The Maybe monad represents computations which might "go wrong" by not returning a value.
-
+Great, let's then create a quick demo for this. A `divide` function
+is defined below where you either get a result
+for a valid pair of arguments (that's, the denominator is not `0`) or
+otherwise you get none.
 
 <iframe style="border: 1px solid #999;width: 100%; height: 580px"
         src="https://embed.plnkr.co/Gi1A7855iDvlwjbhGa6q/?show=src/main.ts,preview" frameborder="0"
         allowfullscreen="allowfullscreen">
   Loading plunk...
 </iframe>
+
+
+### Either
+
+`Either` is like `Option` but in this case, you can encode
+the reason for a failure giving a chance to the consumer
+of your method to know
+why an operation failed to complete successfully.
+
+You encode the valid result of an operation in the `Right` side of
+the datastructure and the invalid result of an operation (normally an string
+but you can put anything you want) in the `Left` side of it.
+
+Let's port our previous example to `Either`...
+
+<iframe style="border: 1px solid #999;width: 100%; height: 580px"
+        src="https://embed.plnkr.co/1UZDEnWu9kB5anBWCApv/?show=src/main.ts,preview" frameborder="0"
+        allowfullscreen="allowfullscreen">
+  Loading plunk...
+</iframe>
+
+I think the code now reveals in a better way the outcome of the computation.
+
+
+## Conclusion
+
+We looked today at how to use functional programming to model your programs
+using sound abstractions, `Option` and `Either` in this case.
+
+There is so much more to it, I plan to create a few more articles
+about this very soon (I have one in the backburner about `Free` and another about `Validation`), but this should suffice for the time being.
+
+Until next time.
+
