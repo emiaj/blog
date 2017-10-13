@@ -25,7 +25,7 @@
 		{{ with .Site.Params.sidebar.flickr }}
 		<li><a href="//flickr.com/photos/{{ . }}" target="_blank" class="icon fa-flickr"><span class="label">Flickr</span></a></li>
 		{{ end }}
-		{{ with .Site.Params.contact.email }}
+		{{ with and (.Site.Params.contact.email) (not .Site.Params.contact.hide) }}
 		<li><a href="{{ $.Site.BaseURL }}#contact-form" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 		{{ end }}
 		{{ if not .Site.Params.rss.hide }}

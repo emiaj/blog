@@ -18,7 +18,7 @@ paginate = 10
 	date_format = "2006-01-02"
 
 	# Add read time estimates in the format "X min read"
-	show_read_time = false
+	show_read_time = true
 
 	# Add custom assets with their paths relative to the static folder
 	custom_js   = []
@@ -42,17 +42,14 @@ paginate = 10
 
 		copyright = [
 			"&copy; Jaime Febres",
-			"Design: [HTML5 UP](//html5up.net)",
-			"Demo Images: [Unsplash](//unsplash.com/)"
+			"Design: [HTML5 UP](//html5up.net)"
 		]
 
 
 	[params.about]
 		hide  = false
 		title = "Jaime Febres - Software Development Blog"
-		content = """
-C#, Typescript, Web Development, Functional Programming and everything in between...
-"""
+		content = "C#, Typescript, Web Development, Functional Programming and everything in between..."
 		
 		
 
