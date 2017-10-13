@@ -2,7 +2,7 @@ baseurl = "/"
 languageCode = "en-us"
 title = "FullSnackDev - Blog"
 theme = "hugo-strata-theme"
-disqusShortname = "spf13"
+disqusShortname = "tech-fullsnackdev-com"
 # Enable Google Analytics by inserting your tracking code
 googleAnalytics = ""
 # Define how many posts should appear on a site
