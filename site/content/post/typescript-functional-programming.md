@@ -2,6 +2,7 @@
 title: "Functional programming with Typescript"
 date: 2017-10-12T17:02:01+10:00
 draft: false
+tags: [typescript, fp-ts]
 ---
 
 ## Introduction
