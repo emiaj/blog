@@ -128,7 +128,10 @@ Our `value` argument is no longer of type `any` but instead it matches the decla
 
 Let's see this in action:
 
-<img title="TypedBuilder demo" src="/images/typescript-builder-pattern/builder-02.gif" style="width:30vw;">
+<div class="image fit">
+  <img title="TypedBuilder demo" src="/images/typescript-builder-pattern/builder-02.gif" >
+</div>
+
 
 This solution, however, has a few problems:
 
@@ -220,7 +223,9 @@ And thanks to Typescript structural equality, that object can be set to a `Reque
 
 Additionally, below I showcase how it's not possible to set a single property more than once:
 
-<img title="TypedBuilder demo" src="/images/typescript-builder-pattern/builder-03.gif" style="width:30vw;">
+<div class="image fit">
+  <img title="AdvanceBuilder single property assignment demo" src="/images/typescript-builder-pattern/builder-03.gif" >
+</div>
 
 
 ## Conclusion
@@ -234,4 +239,3 @@ Did I have fun doing it? Absolutely.
 
 Finally, you can get the code used in this article from [this gist](https://gist.github.com/emiaj/b7fc92d6fa586935b6f8d62a5299b1e6).  
 Until next time.
-
