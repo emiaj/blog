@@ -1,8 +1,8 @@
-baseurl = "/"
+baseurl = "https://example.org/"
 languageCode = "en-us"
-title = "FullSnackDev - Blog"
+title = "Strata"
 theme = "hugo-strata-theme"
-disqusShortname = "tech-fullsnackdev-com"
+disqusShortname = "spf13"
 # Enable Google Analytics by inserting your tracking code
 googleAnalytics = ""
 # Define how many posts should appear on a site
@@ -11,14 +11,14 @@ paginate = 10
 [params]
 	# To provide some metadata for search engines feel free to add a few
     # information about you and your website.
-	name = "Jaime Febres"
-	description = "Jaime Febres - Technical Blog"
+	name = "Your name"
+	description = "Describe your website"
 
 	# Format dates with Go's time formatting
 	date_format = "2006-01-02"
 
 	# Add read time estimates in the format "X min read"
-	show_read_time = true
+	show_read_time = false
 
 	# Add custom assets with their paths relative to the static folder
 	custom_js   = []
@@ -29,11 +29,11 @@ paginate = 10
 		# Replace the avatar with a picture of your own under static/images
 		avatar = "avatar.jpg"
 		# Use Markdown to format the string. This works nearly all over the theme
-		bio = "Hello, I'm **Jaime**, a software developer from sunny **Brisbane, Australia**."
+		bio = "**I'm Strata**, a super simple<br> responsive site template freebie<br> crafted by [HTML5 UP](//html5up.net)."
 		# The icons will be shown if you enter your username
-		twitter = "jaimefebres"
-		github = "emiaj"
-		gitlab = ""
+		twitter = "spf13"
+		github = "spf13"
+		gitlab = "spf13"
 		dribbble = ""
 		facebook = ""
 		googleplus = ""
@@ -41,21 +41,20 @@ paginate = 10
 		linkedin = ""
 
 		copyright = [
-			"&copy; Jaime Febres",
-			"Design: [HTML5 UP](//html5up.net)"
+			"&copy; John Doe",
+			"Design: [HTML5 UP](//html5up.net)",
+			"Demo Images: [Unsplash](//unsplash.com/)"
 		]
 
 
 	[params.about]
 		hide  = false
-		title = "Jaime Febres - Software Development Blog"
-		content = "C#, Typescript, Web Development, Functional Programming and everything in between..."
-		
-		
+		title = "Ipsum lorem dolor aliquam ante commodo magna sed accumsan arcu neque."
+		content = "Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia."
 
 
 	[params.portfolio]
-		hide  = true
+		hide  = false
 		title = "Recent Work"
 
 		# The images and thumbnails are stored under static/images
@@ -101,18 +100,18 @@ paginate = 10
 		title = "Recent blog posts"
 
 	[params.contact]
-		hide  = true
+		hide  = false
 		title = "Get In Touch"
 		content = "Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor."
 
 		# This can be exact coordinates or a searchable address in google maps
-		# gmaps_address = "39.7889055,-120.5443524"
-		# address = [
-		# 	"1234 Somewhere Rd.",
-		# 	"Nashville, TN 00000",
-		# 	"United States"
-		# ]
-		# phone = "000-000-0000"
+		gmaps_address = "39.7889055,-120.5443524"
+		address = [
+			"1234 Somewhere Rd.",
+			"Nashville, TN 00000",
+			"United States"
+		]
+		phone = "000-000-0000"
 
 		# Since this template is static, the contact form uses www.formspree.io as a
 		# proxy. The form makes a POST request to their servers to send the actual
@@ -143,6 +142,6 @@ paginate = 10
 	weight = 10
 
 [[menu.main]]
-	name = "Posts"
+	name = "Blog"
 	url  = "post/"
 	weight = 0
