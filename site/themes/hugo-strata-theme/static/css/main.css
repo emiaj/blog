@@ -1672,13 +1672,21 @@
 	}
 
 	code {
-		background: #f7f7f7;
+		background: #a6e22e;
+		font-weight: bold;
 		border-radius: 0.35em;
 		border: solid 2px #efefef;
 		font-family: "Courier New", monospace;
 		font-size: 0.9em;
 		margin: 0 0.25em;
 		padding: 0.25em 0.65em;
+	}
+
+	.highlight code {
+		background: none;
+		font-weight: normal;
+		border-radius: none;
+		border: none;
 	}
 
 	pre {

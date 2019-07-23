@@ -15,6 +15,7 @@ I have found the React docs quite good at explaining what they are and how you a
 You can read more about them here: https://reactjs.org/docs/hooks-intro.html  
 
 
+
 ## useEffect
 
 
@@ -40,8 +41,10 @@ Let's create a little app that let's you:
 
 Something like this:  
 
-<div class="image fit">
-  <img title="Demo application" src="/images/react-use-effect-and-fetch/react-fav-framework-demo-01.gif" >
+<div>
+    <a class="image fit thumb">
+      <img title="Demo application" src="/images/react-use-effect-and-fetch/react-fav-framework-demo-01.gif" >
+    </a>
 </div>
 
 
@@ -62,7 +65,8 @@ The `details` property represents the url from where to fetch the additional inf
 
 Here's an excerpt from the `PopularFrameworks` component:
 
-```tsx
+{{< highlight jsx "hl_lines=5-9 29" >}}
+
 export const PopularFrameworks: React.FC = () => {
 
     const [state, update] = React.useState<FrameworkSummary | null>(null);
@@ -79,7 +83,9 @@ export const PopularFrameworks: React.FC = () => {
                 {
                     frameworks.map(framework => {
                         return <li key={framework.name}
-                            style={state && state.name === framework.name ? selectedFrameworkStyle : frameworkStyle}
+                            style={state && state.name === framework.name ? 
+                                                            selectedFrameworkStyle : 
+                                                            frameworkStyle}
                             onClick={() => update(framework)}>
                             {framework.name}
                         </li>
@@ -89,30 +95,34 @@ export const PopularFrameworks: React.FC = () => {
         </div>
         <div style={{ flex: 1, display: 'flex' }}>
             {
-                state &&
-                <FrameworkDetails {...state} />
+                state && <FrameworkDetails {...state} />
             }
         </div>
     </div>;
 }
-```
+{{< /highlight >}}
+
 
 When a framework gets selected, we then pass that info down to a `FrameworkDetails` component, where the framework information data is ultimately retrieved using the `fetch` API.   
 
-```tsx
-export const FrameworkDetails: React.FC<FrameworkDetailsProps> = (props: FrameworkDetailsProps) => {
+{{< highlight jsx "hl_lines=14-16 18" >}}
+export const FrameworkDetails: React.FC<FrameworkDetailsProps> = 
+    props: FrameworkDetailsProps) => {
 
     const [state, update] = React.useState<FrameworkDetailsState>({ loaded: false });
 
     /*
       Retrieve JS Framework information using `fetch`.
-      We pass [prop.details] as a dependency of this hook so that we don't fetch data unnecessarily.
+      We pass [prop.details] as a dependency of this hook so that we don't 
+      fetch data unnecessarily.
     */
     React.useEffect(() => {
         update({ loaded: false, description: null });
+
         fetch(props.details)
             .then(response => response.json())
             .then(json => update({ loaded: true, ...json }));
+
     }, [props.details]);
 
     return <div style={{ padding: '1rem', margin: '1rem', flex: 1 }}>
@@ -126,7 +136,7 @@ export const FrameworkDetails: React.FC<FrameworkDetailsProps> = (props: Framewo
 
     </div>;
 }
-```
+{{< /highlight >}}
 
 As you can see from the animated gif above, the framework data is retrieved and rendered correctly on the page and everything works just fine.   
 
@@ -136,13 +146,25 @@ Or maybe not...
 ## Race conditions
 
 Let's add a delay query-string parameter to our Mocky endpoints to simulate network latency, that would reveal a hidden problem in our current implementation:  
-```typescript
+{{< highlight tsx >}}
     const frameworks: FrameworkSummary[] = [
-        { "name": "React", details: "http://www.mocky.io/v2/5d36894a56000067003a5323?mocky-delay=3s" }, // respond after 3 seconds
-        { "name": "Angular", details: "http://www.mocky.io/v2/5d368a3256000054003a5327?mocky-delay=2s" }, // respond after 2 seconds
-        { "name": "Vue", details: "http://www.mocky.io/v2/5d36899b5600007d5d3a5324?mocky-delay=1s" } // respond after 1 second
+        { 
+            "name": "React", 
+             // respond after 3 seconds
+             "details": "http://www.mocky.io/v2/5d36894a56000067003a5323?mocky-delay=3s"
+        }, 
+        { 
+            "name": "Angular", 
+             // respond after 2 seconds
+            "details": "http://www.mocky.io/v2/5d368a3256000054003a5327?mocky-delay=2s"
+        },
+        { 
+            "name": "Vue", 
+             // respond after 1 seconds
+            "details": "http://www.mocky.io/v2/5d36899b5600007d5d3a5324?mocky-delay=1s"
+        } 
     ];
-```
+{{< /highlight >}}
 Let's see what happens with our app under these conditions...  
 
 <div class="image fit">
@@ -161,7 +183,8 @@ Thankfully, the `fetch` API offers a way to cancel ongoing requests using a `sig
 Lets adjust our effect in `FrameworkDetails` accordingly to graceful cancel ongoing requests:  
 
 
-```tsx
+{{< highlight tsx "linenos=inline,hl_lines=3 8 11-18 22-25" >}}
+
     React.useEffect(() => {
         // AbortController instance
         const controller = new AbortController();
@@ -188,7 +211,7 @@ Lets adjust our effect in `FrameworkDetails` accordingly to graceful cancel ongo
             controller.abort();
         };
     }, [props.details]);
-```
+{{< /highlight >}}
 
 
 With that in place, let's see how our app behaves now:   
