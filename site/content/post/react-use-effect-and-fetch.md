@@ -181,7 +181,7 @@ Thankfully, the `fetch` API offers a way to cancel ongoing requests using a `sig
 Lets adjust our effect in `FrameworkDetails` accordingly to graceful cancel ongoing requests:  
 
 
-{{< highlight tsx "linenos=inline,hl_lines=3 8 11-18 22-25" >}}
+{{< highlight tsx "hl_lines=3 8 11-18 22-25" >}}
 
     React.useEffect(() => {
         // AbortController instance
