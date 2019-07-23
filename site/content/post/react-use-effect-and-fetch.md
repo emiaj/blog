@@ -41,10 +41,8 @@ Let's create a little app that let's you:
 
 Something like this:  
 
-<div>
-    <a class="image fit thumb">
-      <img title="Demo application" src="/images/react-use-effect-and-fetch/react-fav-framework-demo-01.gif" >
-    </a>
+<div class="image fit">
+    <img title="Demo application" src="/images/react-use-effect-and-fetch/react-fav-framework-demo-01.gif" >
 </div>
 
 
