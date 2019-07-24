@@ -21,7 +21,7 @@ In this article we will see how Typescript type system can help us implement a g
 
 Let's define a simple interface that we will use in our solutions below:
 
-{{< highlight ts >}}
+```ts
 interface RequestSettings {
   protocol: 'http' | 'https';
   host: string;
@@ -29,20 +29,20 @@ interface RequestSettings {
   query?: string;
   headers: { key: string, value: string }[]
 }
-{{< /highlight >}}
+```
 
 ## Solution #0
 
 This one is for the naysayers, we could ignore the whole point of the article and simply say that the `Builder` pattern is useless and that one could simply do:
 
-{{< highlight ts >}}
+```ts
 const settings0: RequestSettings = {
   protocol: 'http',
   host: 'test.com',
   path: '/foo/bar',
   headers: []
 }
-{{< /highlight >}}
+```
 
 Basically manually construction of the `settings` object but where's the fun in that, right?
 
@@ -50,7 +50,7 @@ Basically manually construction of the `settings` object but where's the fun in 
 
 Here we create a `Builder` class where you pass property names and values that construct on each call the object that we want to get.
 
-{{< highlight ts >}}
+```ts
 class SimpleBuilder {
   constructor(private current = {}) {
 
@@ -74,7 +74,7 @@ const settings1 = new SimpleBuilder()
   .prop('headers', [])
   .build<RequestSettings>();
 
-{{< /highlight >}}
+```
 
 However, this solution is a bit brittle.
 
@@ -91,7 +91,7 @@ This time we want to avoid all the problems from `Solution #1`.
 
 How would that look like? Here is how:
 
-{{< highlight ts >}}
+```ts
 class TypedBuilder<T> {
   constructor(private current = {}) {
   }
@@ -111,7 +111,7 @@ const settings2 = new TypedBuilder<RequestSettings>()
   .prop('path', '/foo/bar')
   .prop('headers', [])
   .build();
-{{< /highlight >}}
+```
 
 Now that's much better!!
 
@@ -157,7 +157,7 @@ You can read more about them in the [Advanced Types](https://www.typescriptlang.
 The actual implementation would be:
 
 
-{{< highlight ts >}}
+```ts
 class AdvanceBuilder<T, R extends {} = {}> {
 
   constructor(private current: R = null) {
@@ -183,11 +183,11 @@ class AdvanceBuilder<T, R extends {} = {}> {
     return this.current;
   }
 }
-{{< /highlight >}}
+```
 
 The usage of identical to `TypedBuilder`, the only difference is that the return type changes as we call the `prop` function:
 
-{{< highlight ts >}}
+```ts
 const settings3: RequestSettings = new AdvanceBuilder<RequestSettings>()
   // AdvanceBuilder<RequestSettings, Pick<RequestSettings, "protocol">>
   .prop('protocol', 'http')
@@ -207,18 +207,18 @@ const settings3: RequestSettings = new AdvanceBuilder<RequestSettings>()
   // Pick<RequestSettings, "path"> & 
   // Pick<RequestSettings, "headers">
   .build();
-{{< /highlight >}}
+```
 
 As I said before, each call to `prop` enhances the `AdvanceBuild` type and specialises it more and more.
 
 On the final call to `build` we get the following type:
 
-{{< highlight ts >}}
+```ts
 Pick<RequestSettings, "protocol"> & 
 Pick<RequestSettings, "host"> & 
 Pick<RequestSettings, "path"> & 
 Pick<RequestSettings, "headers">
-{{< /highlight >}}
+```
 
 And thanks to Typescript structural equality, that object can be set to a `RequestSettings` type.
 

@@ -103,7 +103,7 @@ export const PopularFrameworks: React.FC = () => {
 
 When a framework gets selected, we then pass that info down to a `FrameworkDetails` component, where the framework information data is ultimately retrieved using the `fetch` API.   
 
-{{< highlight jsx "hl_lines=14-16 18" >}}
+{{< highlight jsx "hl_lines=11 14-16 18" >}}
 export const FrameworkDetails: React.FC<FrameworkDetailsProps> = 
     props: FrameworkDetailsProps) => {
 
@@ -144,7 +144,7 @@ Or maybe not...
 ## Race conditions
 
 Let's add a delay query-string parameter to our Mocky endpoints to simulate network latency, that would reveal a hidden problem in our current implementation:  
-{{< highlight tsx >}}
+```ts
     const frameworks: FrameworkSummary[] = [
         { 
             "name": "React", 
@@ -162,7 +162,7 @@ Let's add a delay query-string parameter to our Mocky endpoints to simulate netw
             "details": "http://www.mocky.io/v2/5d36899b5600007d5d3a5324?mocky-delay=1s"
         } 
     ];
-{{< /highlight >}}
+```
 Let's see what happens with our app under these conditions...  
 
 <div class="image fit">
@@ -180,9 +180,7 @@ Thankfully, the `fetch` API offers a way to cancel ongoing requests using a `sig
 
 Lets adjust our effect in `FrameworkDetails` accordingly to graceful cancel ongoing requests:  
 
-
 {{< highlight tsx "hl_lines=3 8 11-18 22-25" >}}
-
     React.useEffect(() => {
         // AbortController instance
         const controller = new AbortController();
@@ -210,7 +208,6 @@ Lets adjust our effect in `FrameworkDetails` accordingly to graceful cancel ongo
         };
     }, [props.details]);
 {{< /highlight >}}
-
 
 With that in place, let's see how our app behaves now:   
 
