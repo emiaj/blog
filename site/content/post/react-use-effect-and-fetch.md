@@ -226,7 +226,7 @@ Yay, now our app is displaying the right information at all times!!!
 
 React hooks are quite powerful but we need to be aware of these subtle issues and act accordingly.  
 
-Using `AbortController` on `fetch` promises will keep us in a safe space by following the simple pattern I showed in this article.  
+Using `AbortController` with `fetch` will keep us in a safe space by following the simple pattern I showed in this article.  
 
 ## Additional resources
 
