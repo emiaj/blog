@@ -230,6 +230,8 @@ Using `AbortController` on `fetch` promises will keep us in a safe space by foll
 
 ## Additional resources
 
-- How to clean up subscriptions in react components using AbortController ? by @seganesa https://link.medium.com/OLvfQmReyY
-- react-hooks-fetch - https://github.com/dai-shi/react-hooks-fetch
+- Fetch API - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API  
+- AbortController - https://developer.mozilla.org/en-US/docs/Web/API/AbortController  
+- How to clean up subscriptions in react components using AbortController ? by @seganesa https://link.medium.com/OLvfQmReyY  
+- react-hooks-fetch - https://github.com/dai-shi/react-hooks-fetch  
 - useEffect memory leak when setting state in fetch promise #15006 - https://github.com/facebook/react/issues/15006
