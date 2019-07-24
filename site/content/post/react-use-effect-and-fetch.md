@@ -230,6 +230,7 @@ Using `AbortController` on `fetch` promises will keep us in a safe space by foll
 
 ## Additional resources
 
+- React Hooks - https://reactjs.org/docs/hooks-intro.html  
 - Fetch API - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API  
 - AbortController - https://developer.mozilla.org/en-US/docs/Web/API/AbortController  
 - How to clean up subscriptions in react components using AbortController ? by @seganesa https://link.medium.com/OLvfQmReyY  
