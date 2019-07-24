@@ -1672,7 +1672,8 @@
 	}
 
 	code {
-		background: #a6e22e;
+		color: #a6e22e;
+		background: #3c3d38;
 		font-weight: bold;
 		border-radius: 0.35em;
 		border: solid 2px #efefef;
@@ -1684,6 +1685,7 @@
 
 	.highlight code {
 		background: none;
+		color: inherit;
 		font-weight: normal;
 		border-radius: none;
 		border: none;
