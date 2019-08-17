@@ -105,7 +105,7 @@ When a framework gets selected, we then pass that info down to a `FrameworkDetai
 
 {{< highlight jsx "hl_lines=11 14-16 18" >}}
 export const FrameworkDetails: React.FC<FrameworkDetailsProps> = 
-    props: FrameworkDetailsProps) => {
+    (props: FrameworkDetailsProps) => {
 
     const [state, update] = React.useState<FrameworkDetailsState>({ loaded: false });
 
