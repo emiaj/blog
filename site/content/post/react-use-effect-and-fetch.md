@@ -22,7 +22,7 @@ You can read more about them here: https://reactjs.org/docs/hooks-intro.html
 The `useEffect` hook let's you perform _side effects_ in function components, those side effects could be:
 
 - Persisting state to `localStorage`.
-- Using `timeout` to run a background task.
+- Using `setTimeout`/`setInterval` to run a background task.
 - Subscribe/unsubscribe to events.
 - Retrieving data from an external source.
 
